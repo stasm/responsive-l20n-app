@@ -6,7 +6,7 @@
           "large" }>
 
 <title[formFactor(@screen.width)] {
-  desktop: "Lista rzeczy do zrobienia dzisiaj",
+ *desktop: "Lista rzeczy do zrobienia dzisiaj",
   landscapePhone: "Do zrobienia dzisiaj",
   portraitPhone: "Zrób dziś",
 }>
