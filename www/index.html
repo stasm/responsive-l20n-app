@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- L20n setup -->
+    <link rel="localization" href="locales/manifest.json">
+    <script type="application/l10n-data+json">
+      {
+        "build": "prod",
+        "mode": "multi"
+      }
+    </script>
+
+    <!-- Include the dist version of L20n -->
+    <script src="js/lib/l20n.js"></script>
+    <script>
+      // L20n and document.l10n are now available
+      document.l10n.ready(function() {
+        console.log("Document's context is ready");
+      });
+      document.l10n.addEventListener('error',function(err) {
+        if (err instanceof L20n.Compiler.Error) {
+          // do something
+        }
+      });
+    </script> 
+  </head>
+  <body>
+    <!-- Use this installation button to install locally without going
+         through the marketpace (see app.js) -->
+    <!-- <button id="install-btn">Install</button>     -->
+
+    <x-listview class="list">
+      <header>
+        <h1 data-l10n-id="title"></h1>
+        <button class="add" data-view=".edit" data-animation="slideDown">+</button>
+      </header>
+    </x-listview>
+
+    <x-view class="detail">
+      <header>
+        <h1>Details</h1>
+        <button data-view="x-view.edit">Edit</button>
+      </header>
+
+      <h1 class="title"></h1>
+      <p class="desc"></p>
+      <p class="date"></p>
+    </x-view>
+
+    <x-view class="edit">
+      <header><h1>Edit</h1></header>
+      <div class="field">Title: <input type="text" name="title" /></div>
+      <div class="field">Description: <input type="text" name="desc" /></div>
+      <button type="submit" class="add">Add</button>
+    </x-view>
+
+    <div class="loading">Loading...</div>
+
+    <!-- Using require.js, a module system for javascript, include the
+         js files. This loads "main.js", which in turn can load other
+         files, all handled by require.js:
+         http://requirejs.org/docs/api.html#jsfiles -->
+    <script type="text/javascript"
+            data-main="js/init.js"
+            src="js/lib/require.js"></script>
+  </body>
+</html>
